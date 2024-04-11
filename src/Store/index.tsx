@@ -6,7 +6,7 @@ import { State } from "../Utils/commonProps";
 const initialState: State = {
   movieLoading: false,
   movieDetailsLoading: false,
-  randomMovies: [],
+  movies: [],
   searchQuery: "",
   movie: {},
 };
@@ -21,8 +21,8 @@ const slice = createSlice({
     setMovieDetailsLoading: (state, action) => {
       state.movieDetailsLoading = action.payload;
     },
-    setRandomMovies: (state, action) => {
-      state.randomMovies = action.payload;
+    setMovies: (state, action) => {
+      state.movies = action.payload;
     },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;

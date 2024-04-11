@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface CarouselProps {
   images: string[];
@@ -6,6 +6,15 @@ interface CarouselProps {
 
 const ImageSlider: React.FC<CarouselProps> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 10000); // Slide every 10 seconds
+
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, [activeIndex]);
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) =>

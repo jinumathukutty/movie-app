@@ -2,7 +2,7 @@ export interface State {
   movieLoading: boolean;
   movieDetailsLoading: boolean;
   searchQuery: string | "";
-  randomMovies: MovieBasic[];
+  movies: MovieBasic[];
   movie: MovieDetails | any;
 }
 

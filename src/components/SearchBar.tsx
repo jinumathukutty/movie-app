@@ -3,8 +3,8 @@ import { Input } from "antd";
 import type { SearchProps } from "antd/es/input/Search";
 import { actions } from "../Store";
 import { useDispatch, useSelector } from "react-redux";
-import { getRandomMovies } from "../Services/movies";
 import { State } from "../Utils/commonProps";
+import { getMovies } from "../Services/movies";
 const { Search } = Input;
 
 const SearchBar: React.FC = () => {
@@ -23,7 +23,7 @@ const SearchBar: React.FC = () => {
   };
 
   const handleSearch: SearchProps["onSearch"] = (value) => {
-    getRandomMovies(dispatch, value);
+    getMovies(dispatch, value);
   };
 
   return (

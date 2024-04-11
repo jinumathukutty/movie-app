@@ -3,7 +3,7 @@ import { actions } from "../Store";
 import axios from "axios";
 import { removeHashFromKeys } from "../Utils/Utils";
 
-export async function getRandomMovies(dispatch: Dispatch, searchString = "") {
+export async function getMovies(dispatch: Dispatch, searchString = "") {
   try {
     dispatch(actions.setMovieLoading(true));
     const url =
@@ -18,13 +18,13 @@ export async function getRandomMovies(dispatch: Dispatch, searchString = "") {
       const newArray = description.map((obj: { [key: string]: any }) =>
         removeHashFromKeys(obj)
       );
-      dispatch(actions.setRandomMovies(newArray));
+      dispatch(actions.setMovies(newArray));
     } else {
-      dispatch(actions.setRandomMovies([]));
+      dispatch(actions.setMovies([]));
     }
     dispatch(actions.setMovieLoading(false));
   } catch (error) {
-    dispatch(actions.setRandomMovies([]));
+    dispatch(actions.setMovies([]));
     dispatch(actions.setMovieLoading(false));
   }
 }

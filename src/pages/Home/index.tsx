@@ -5,7 +5,7 @@ import banner3 from "../../assets/images/banner3.png";
 import SearchBar from "../../components/SearchBar";
 import ImageSlider from "../../components/ImageSlider";
 import { useDispatch, useSelector } from "react-redux";
-import { getRandomMovies } from "../../Services/movies";
+import { getMovies } from "../../Services/movies";
 import MovieList from "../../components/MovieList";
 import { State } from "../../Utils/commonProps";
 import CommonLayout from "../../components/CommonLayout";
@@ -13,12 +13,12 @@ import CommonLayout from "../../components/CommonLayout";
 const Home: React.FC = () => {
   const images: string[] = [banner1, banner2, banner3];
   const dispatch = useDispatch();
-  const { randomMovies, movieLoading, searchQuery } = useSelector(
+  const { movies, movieLoading, searchQuery } = useSelector(
     (state: State) => state
   );
 
   useEffect(() => {
-    getRandomMovies(dispatch, searchQuery);
+    getMovies(dispatch, searchQuery);
     // eslint-disable-next-line
   }, [dispatch]);
 
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     <CommonLayout>
       <SearchBar />
       <ImageSlider images={images} />
-      <MovieList movies={randomMovies} loading={movieLoading} />
+      <MovieList movies={movies} loading={movieLoading} />
     </CommonLayout>
   );
 };

@@ -21,12 +21,12 @@ const Movie = () => {
     }
   }, [id, dispatch]);
 
-  const { movie, randomMovies, movieDetailsLoading } = useSelector(
+  const { movie, movies, movieDetailsLoading } = useSelector(
     (state: State) => state
   );
 
   const { short, top, main, storyLine } = movie;
-  const movieData = randomMovies.find((item) => item.IMDB_ID === id);
+  const movieData = movies.find((item) => item.IMDB_ID === id);
 
   const { actor: actors, director, creator } = short;
 
