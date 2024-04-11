@@ -3,6 +3,7 @@
 # Clone the app
 
 git clone https://github.com/jinumathukutty/movie-app.git
+
 cd movie-app
 
 ## Available Scripts
