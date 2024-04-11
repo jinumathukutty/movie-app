@@ -1,10 +1,13 @@
-# Getting Started with Create React App
+# Steps to run the app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clone the app
+
+git clone https://github.com/jinumathukutty/movie-app.git
+cd movie-app
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory (movie-app), you can run:
 
 ### `npm install`
 
