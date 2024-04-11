@@ -11,19 +11,22 @@ import { State } from "../../Utils/commonProps";
 import CommonLayout from "../../components/CommonLayout";
 
 const Home: React.FC = () => {
-  const { randomMovies } = useSelector((state: State) => state);
   const images: string[] = [banner1, banner2, banner3];
   const dispatch = useDispatch();
+  const { randomMovies, movieLoading, searchQuery } = useSelector(
+    (state: State) => state
+  );
 
   useEffect(() => {
-    getRandomMovies(dispatch);
+    getRandomMovies(dispatch, searchQuery);
+    // eslint-disable-next-line
   }, [dispatch]);
 
   return (
     <CommonLayout>
       <SearchBar />
       <ImageSlider images={images} />
-      <MovieList movies={randomMovies} />
+      <MovieList movies={randomMovies} loading={movieLoading} />
     </CommonLayout>
   );
 };

@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Input } from "antd";
 import type { SearchProps } from "antd/es/input/Search";
 import { actions } from "../Store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getRandomMovies } from "../Services/movies";
+import { State } from "../Utils/commonProps";
 const { Search } = Input;
 
 const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
+  const { searchQuery, movieLoading } = useSelector((state: State) => state);
 
   const [width, setWidth] = useState<string | number>(500);
 
@@ -19,8 +22,8 @@ const SearchBar: React.FC = () => {
     }
   };
 
-  const handleSearch: SearchProps["onSearch"] = (value, _e, info) => {
-    console.log(info?.source, value);
+  const handleSearch: SearchProps["onSearch"] = (value) => {
+    getRandomMovies(dispatch, value);
   };
 
   return (
@@ -36,6 +39,8 @@ const SearchBar: React.FC = () => {
           top: "10px",
           width: width,
         }}
+        value={searchQuery}
+        loading={movieLoading}
       />
     </div>
   );

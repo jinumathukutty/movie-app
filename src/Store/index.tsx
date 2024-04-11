@@ -5,8 +5,10 @@ import { State } from "../Utils/commonProps";
 
 const initialState: State = {
   movieLoading: false,
+  movieDetailsLoading: false,
   randomMovies: [],
   searchQuery: "",
+  movie: {},
 };
 
 const slice = createSlice({
@@ -16,11 +18,17 @@ const slice = createSlice({
     setMovieLoading: (state, action) => {
       state.movieLoading = action.payload;
     },
+    setMovieDetailsLoading: (state, action) => {
+      state.movieDetailsLoading = action.payload;
+    },
     setRandomMovies: (state, action) => {
       state.randomMovies = action.payload;
     },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+    },
+    setMovie: (state, action) => {
+      state.movie = action.payload;
     },
   },
 });
